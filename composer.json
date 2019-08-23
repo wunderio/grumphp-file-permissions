@@ -10,7 +10,7 @@
     "bin": ["bin/check_perms"],
     "autoload": {
         "psr-4": {
-            "hkirsman\\CheckFilePermissions\\": "src/"
+            "wunderio\\CheckFilePermissions\\": "src/"
         }
     },
     "require": {

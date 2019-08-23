@@ -57,6 +57,9 @@ function acquire_files_mime {
   echo -n "$files_filtered"
 }
 
+#
+# Functiont to check file permissions.
+#
 function check_perms {
   local perms_expect="$1"
   local file="$2"
