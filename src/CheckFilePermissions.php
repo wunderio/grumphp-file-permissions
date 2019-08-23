@@ -22,12 +22,6 @@ class CheckFilePermissions extends AbstractExternalTask
     public function getConfigurableOptions(): OptionsResolver
     {
       $resolver = new OptionsResolver();
-      $resolver->setDefaults([
-        'ignore_patterns' => [],
-        'triggered_by' => [],
-      ]);
-      $resolver->addAllowedTypes('ignore_patterns', ['array']);
-      $resolver->setAllowedTypes('triggered_by', 'array');
       return $resolver;
     }
 
@@ -39,10 +33,7 @@ class CheckFilePermissions extends AbstractExternalTask
     public function run(ContextInterface $context): TaskResultInterface
     {
       $config = $this->getConfiguration();
-      $files = $context
-        ->getFiles()
-        ->notPaths($config['ignore_patterns'])
-        ->extensions($config['triggered_by']);
+      $files = $context->getFiles();
       if ($files->isEmpty()) {
         return TaskResult::createSkipped($this, $context);
       }
